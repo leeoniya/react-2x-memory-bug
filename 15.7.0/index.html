@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React 15.7.0</title>
+
+    <script src="react.min.js"></script>
+    <script src="react-dom.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      function App({ data }) {
+        return React.createElement("div", null, data[0]);
+      }
+
+      const elem = document.getElementById("root");
+
+      renderWithData();
+
+      function renderWithData() {
+        const data = Array.from({ length: 10_000 }, () => Math.random() * 100);
+
+        ReactDOM.render(React.createElement(App, { data: data }), elem);
+      }
+    </script>
+    <button onclick="renderWithData()">Update data!</button>
+  </body>
+</html>
