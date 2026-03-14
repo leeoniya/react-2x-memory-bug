@@ -24,7 +24,7 @@
       function renderWithData() {
         const data = Array.from({ length: 10_000 }, () => Math.random() * 100);
 
-        root.render(React.createElement(App, { data: data }), elem);
+        root.render(React.createElement(App, { data: data }));
       }
     </script>
 
