@@ -1,20 +1,16 @@
-import { update, component, createRoot, useState, html } from "ivi";
+import { update, component, createRoot, html } from "ivi";
 
 function genData() {
   return Array.from({ length: 10_000 }, () => Math.random() * 100);
 }
 
 const App = component((c) => {
-  const [getData, setData] = useState<number[]>(c, genData());
-  const onclick = () => setData(genData());
-
-  return () =>
-    html`
-      ${getData()[0]}
-      <br>
-      <button @click=${onclick}>Update data!</button>
-    `;
+  return (data: number[]) => html`${data[0]}`;
 });
 
 const root = createRoot(document.body);
-update(root, App());
+update(root, App(genData()));
+
+document.getElementById('update')!.addEventListener('click', () => {
+  update(root, App(genData()));
+});
