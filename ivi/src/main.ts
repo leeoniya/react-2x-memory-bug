@@ -8,9 +8,12 @@ const App = component((c) => {
   return (data: number[]) => html`${data[0]}`;
 });
 
-const root = createRoot(document.body);
-update(root, App(genData()));
+const root = createRoot(document.getElementById('root')!);
 
-document.getElementById('update')!.addEventListener('click', () => {
+function renderWithData() {
   update(root, App(genData()));
-});
+}
+
+renderWithData();
+
+window.renderWithData = renderWithData;
